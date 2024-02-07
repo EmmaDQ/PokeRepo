@@ -1,4 +1,4 @@
-﻿namespace PokeRepo.Database
+﻿namespace PokeRepo.Services
 {
     public class PokeRepo
     {
