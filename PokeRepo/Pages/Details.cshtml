@@ -2,3 +2,29 @@
 @model PokeRepo.Pages.DetailsModel
 @{
 }
+
+<div class="text-center d-flex justify-content-center" >
+    <img src="Model.poke.Image"/>
+    <h1>{@Model.poke.Name}</h1>
+    <h6>Type: {@Model.poke.Type}</h6>
+    <h6>Abilyties</h6>
+    <ol>
+        @foreach(var ability in Model.poke.Abilities)
+        {
+            <li>ability</li>
+        }
+        
+    </ol>
+    <div>
+        <h6>Stats:</h6>
+        <ol>
+            <li>Hp: {}</li>
+            <li>Hp: {}</li>
+            <li>Hp: {}</li>
+            <li>Hp: {}</li>
+        </ol>
+    </div>
+    
+    
+
+</div>
