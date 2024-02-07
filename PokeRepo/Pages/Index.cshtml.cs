@@ -6,7 +6,7 @@ namespace PokeRepo.Pages
 {
     public class IndexModel : PageModel
     {
-        public Pokemon Test { get; set; }
+        public PokemonApi Test { get; set; }
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -18,6 +18,13 @@ namespace PokeRepo.Pages
         {
             ApiCaller caller = new ApiCaller();
             Test = await caller.MakeCall("1");
+
+
+        }
+
+        public void OnPostAsync(string pokeName)
+        {
+            //return RedirectToPage("/Details", new {pokemon =  })
         }
     }
 }

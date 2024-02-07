@@ -21,11 +21,40 @@ namespace PokeRepo.Api
             {
                 string json = await response.Content.ReadAsStringAsync();
 
-                Pokemon? result = JsonConvert.DeserializeObject<Pokemon>(json);
+                PokemonApi? result = JsonConvert.DeserializeObject<PokemonApi>(json);
+
 
                 if (result != null)
                 {
-                    return result;
+
+
+
+                    Pokemon pokemon = new Pokemon()
+                    {
+                        Name = result.Name,
+                        Hp = result.Stats[0].BaseStat,
+                        Attack = result.Stats[1].BaseStat,
+                        Defence = result.Stats[2].BaseStat,
+                        SpecialAttack = result.Stats[3].BaseStat,
+                        SpecialDefence = result.Stats[4].BaseStat,
+                        Speed = result.Stats[5].BaseStat,
+                        Image = result.Sprites.Sprite,
+                        Abilities =
+                        {
+                            new Ability()
+                            {
+                                Name = result.Abilities[0].AbilityApiDeep.Name
+                            },
+                            new Ability()
+                            {
+                                Name = result.Abilities[1].AbilityApiDeep.Name
+                            },
+                        }
+
+
+                    };
+
+                    return pokemon;
                 }
             }
             throw new Exception("Could not find Pokemon");

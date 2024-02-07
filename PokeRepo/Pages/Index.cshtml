@@ -6,7 +6,10 @@
 
 <div class="text-center">
     <h1 class="display-4">View a gen one Pokemon</h1>
-    <form class="d-flex justify-content-center">
+    <div>
+        <img src="@Model.Test.Sprites.Sprite"/>
+    </div>
+    <form class="d-flex justify-content-center" method="post" >
         <select class="form-select form-select-lg w-25 text-center" >
             @foreach (var name in Enum.GetNames(typeof(Models.Gen1)))
             {
