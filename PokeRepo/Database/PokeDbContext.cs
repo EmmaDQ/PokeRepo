@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PokeRepo.Models;
 
 namespace PokeRepo.Database
 {

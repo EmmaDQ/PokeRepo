@@ -1,4 +1,5 @@
-﻿using PokeRepo.Models;
+﻿using Newtonsoft.Json;
+using PokeRepo.Models;
 
 namespace PokeRepo.Api
 {
@@ -18,7 +19,14 @@ namespace PokeRepo.Api
 
             if (response.IsSuccessStatusCode)
             {
+                string json = await response.Content.ReadAsStringAsync();
 
+                Pokemon? result = JsonConvert.DeserializeObject<Pokemon>(json);
+
+                if (result != null)
+                {
+                    return result;
+                }
             }
             throw new Exception("Could not find Pokemon");
         }

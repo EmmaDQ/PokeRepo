@@ -8,7 +8,7 @@ builder.Services.AddRazorPages();
 
 string? connectionString = builder.Configuration.GetConnectionString("DbConnection");
 builder.Services.AddDbContext<PokeDbContext>(options => options.UseSqlServer(connectionString));
-builder.Services.AddScoped<IPokeRepo, PokeRepo>();
+//builder.Services.AddScoped<IPokeRepo, PokeRepo>();
 
 
 var app = builder.Build();
