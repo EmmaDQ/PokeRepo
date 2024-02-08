@@ -1,0 +1,25 @@
+﻿@page
+@using PokeRepo.Models
+@model PokeRepo.Pages.Gen1Model
+@{
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Stored Pokemon</h1>
+    <div class="row">
+        @foreach(Pokemon pokemon in Model.Pokemons)
+        {
+            <div class="card card-body col-4">
+                <img class="card-img-top" src="@pokemon.Image"/>    
+                <h2>@pokemon.Name</h2>
+                <hr />
+               
+             
+            </div>
+        }
+
+    </div>
+    
+    
+</div>
