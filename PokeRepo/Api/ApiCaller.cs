@@ -6,11 +6,26 @@ namespace PokeRepo.Api
     public class ApiCaller
     {
         public HttpClient client { get; set; }
+
         public ApiCaller()
         {
             client = new HttpClient();
 
             client.BaseAddress = new Uri("https://pokeapi.co/api/v2/pokemon/");
+        }
+
+        public async Task<List<Pokemon>> GetFirst30Pokemon()
+        {
+            List<Pokemon> pokemonList = new List<Pokemon>();
+
+            for (int i = 1; i <= 30; i++)
+            {
+                string url = $"{i}";
+                Pokemon pokemon = await MakeCall(url);
+                pokemonList.Add(pokemon);
+            }
+
+            return pokemonList;
         }
 
         public async Task<Pokemon> MakeCall(string url)

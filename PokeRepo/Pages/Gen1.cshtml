@@ -5,21 +5,32 @@
 }
 
 
-<div class="text-center">
-    <h1 class="display-4">Stored Pokemon</h1>
-    <div class="row">
-        @foreach(Pokemon pokemon in Model.Pokemons)
-        {
-            <div class="card card-body col-4">
-                <img class="card-img-top" src="@pokemon.Image"/>    
-                <h2>@pokemon.Name</h2>
-                <hr />
-               
-             
-            </div>
-        }
+<div class=" text-center">
+    <form method="post">
+        
 
-    </div>
+        
+        @foreach (var name in Enum.GetNames(typeof(Models.Gen1)))
+        {
+
+            <input type="hidden" name="pokeName" value="@name" />
+            <h2>@name</h2>
+
+
+                <button>View</button>
+            @* <div>
+               
+                <a asp-action="OnPostAsync" asp-route-name="@name"><h1>@name</h1></a>
+                <hr />
+                <br />
+            </div>
+             *@
+
+             
+        }
+        
+        
+    </form>
     
     
 </div>

@@ -20,3 +20,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.card{
+    background-color : antiquewhite;
+    height: 150px;
+    width: 75px;
+
+}
+
+.card image{
+    height: 50px;
+    width: 50px;
+    margin-block-start: 10px;
+}
+
+.first-page {
+    background-image: url("pokemons.jpg");
+    opacity: 0,5;
+}
+ol{
+
+}

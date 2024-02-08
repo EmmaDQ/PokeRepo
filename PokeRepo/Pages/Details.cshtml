@@ -3,13 +3,13 @@
 @{
 }
 
-<div class="text-center d-flex justify-content-center" >
-    <img src="Model.poke.Image"/>
-    <h1>{@Model.poke.Name}</h1>
-    <h6>Type: {@Model.poke.Type}</h6>
-    <h6>Abilyties</h6>
+<div class="text-center flex-md-column justify-content-center align" >
+    <img src="@Model.Poke.Image"/>
+    <h1>@Model.Poke.Name</h1>
+    
+    <h6>Abilyties: </h6>
     <ol>
-        @foreach(var ability in Model.poke.Abilities)
+        @foreach(var ability in Model.Poke.Abilities)
         {
             <li>ability</li>
         }
@@ -17,14 +17,19 @@
     </ol>
     <div>
         <h6>Stats:</h6>
-        <ol>
-            <li>Hp: {}</li>
-            <li>Hp: {}</li>
-            <li>Hp: {}</li>
-            <li>Hp: {}</li>
-        </ol>
+        <ul class="list-unstyled">
+            <li>Hp: @Model.Poke.Hp</li>
+            <li>Attack: @Model.Poke.Attack</li>
+            <li>Defence: @Model.Poke.Defence</li>
+            <li>Speed: @Model.Poke.Speed</li>
+            <li>Special defence: @Model.Poke.SpecialDefence</li>
+            <li>Special attack: @Model.Poke.SpecialAttack</li>
+        </ul>
     </div>
-    
+    <div>
+        <input asp-page="/Gen1" class="btn btn-primary" value="Back to Gen One list" />
+        <input asp-page="/Index" class="btn btn-primary" value="Home Page" />
+    </div>
     
 
 </div>

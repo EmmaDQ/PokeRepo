@@ -1,21 +1,27 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PokeRepo.Models;
+using PokeRepo.Services;
 
 namespace PokeRepo.Pages
 {
     public class IndexModel : PageModel
     {
+        public PokkeRepo Repo { get; }
+        public List<Pokemon> pokes { get; set; } = new List<Pokemon>();
+        public Pokemon selectedPoke = new Pokemon();
 
-        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
 
         public async Task OnGetAsync()
         {
+            //try
+            //{
+            //    pokes = Repo.GetAllPokemon().ToList();
+            //}
+            //catch (Exception ex)
+            //{
 
-
+            //}
 
         }
 
