@@ -4,10 +4,10 @@
 }
 
 <div class="text-center d-flex justify-content-center" >
-    <img src="Model.poke.Image"/>
+    <img src="{@Model.poke.Image}"/>
     <h1>{@Model.poke.Name}</h1>
-    <h6>Type: {@Model.poke.Type}</h6>
-    <h6>Abilyties</h6>
+    <h6>Type: {}</h6>
+    <h6>Abilyties: </h6>
     <ol>
         @foreach(var ability in Model.poke.Abilities)
         {
@@ -18,13 +18,15 @@
     <div>
         <h6>Stats:</h6>
         <ol>
-            <li>Hp: {}</li>
-            <li>Hp: {}</li>
-            <li>Hp: {}</li>
-            <li>Hp: {}</li>
+            <li>Hp: {@Model.poke.Hp}</li>
+            <li>Attack: {@Model.poke.Attack}</li>
+            <li>Defence: {@Model.poke.Defence}</li>
+            <li>Speed: {@Model.poke.Speed}</li>
+            <li>Special defence: {@Model.poke.SpecialDefence}</li>
+            <li>Special attack: {@Model.poke.SpecialAttack}</li>
         </ol>
     </div>
-    
-    
+
+    <input asp-page="/Index" class="btn btn-primary"/>
 
 </div>
