@@ -33,3 +33,11 @@ body {
     width: 50px;
     margin-block-start: 10px;
 }
+
+.first-page {
+    background-image: url("pokemons.jpg");
+    opacity: 0,5;
+}
+ol{
+
+}

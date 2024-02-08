@@ -58,7 +58,13 @@ namespace PokeRepo.Services
             List<Pokemon> pokemonList = new List<Pokemon>();
             pokemonList = context.Pokemons.ToList();
 
-            return pokemonList;
+            if (pokemonList != null)
+            {
+                return pokemonList;
+            }
+
+            else { return Enumerable.Empty<Pokemon>(); }
+
         }
     }
 }

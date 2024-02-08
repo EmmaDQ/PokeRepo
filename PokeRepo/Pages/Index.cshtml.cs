@@ -7,15 +7,21 @@ namespace PokeRepo.Pages
     public class IndexModel : PageModel
     {
         public PokkeRepo Repo { get; }
-        public List<Pokemon> pokes = new List<Pokemon>();
+        public List<Pokemon> pokes { get; set; } = new List<Pokemon>();
         public Pokemon selectedPoke = new Pokemon();
 
 
 
         public async Task OnGetAsync()
         {
+            //try
+            //{
+            //    pokes = Repo.GetAllPokemon().ToList();
+            //}
+            //catch (Exception ex)
+            //{
 
-            pokes = Repo.GetAllPokemon().ToList();
+            //}
 
         }
 

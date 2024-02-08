@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PokeRepo.Api;
 using PokeRepo.Database;
 using PokeRepo.Services;
 
@@ -10,6 +11,10 @@ builder.Services.AddRazorPages();
 string? connectionString = builder.Configuration.GetConnectionString("DbConnection");
 builder.Services.AddDbContext<PokeDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IPokkeRepo, PokkeRepo>();
+builder.Services.AddScoped<ApiCaller>();
+
+
+
 
 
 var app = builder.Build();

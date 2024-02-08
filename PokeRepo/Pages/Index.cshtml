@@ -4,29 +4,25 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">View a gen one Pokemon</h1>
-    
-    <form class="d-flex justify-content-center" method="post" >
-        <select class="form-select form-select-lg w-25 text-center" >
-            @foreach (var name in Enum.GetNames(typeof(Models.Gen1)))
+
+    <div class="first-page text-center">
+        <img src="\Images\pokemons.jpg" />
+    <a asp-page="Gen1" class="btn btn-primary" ><h1 class="display-4">View a gen one Pokemon</h1></a>
+
+
+
+        <form>
+            @foreach (var pokemon in @Model.pokes)
             {
-                <option value="@name" >@name</option>
+                <div class="card">
+                    <img src="{@pokemon.Image}" />
+                    <input type"submit" value="{@pokemon.Name}" style="font-size:large" asp-for="@Model.selectedPoke" />
+
+                </div>
+
             }
-        </select>
-        <button class="btn btn-primary">View</button>
-    </form>
+        </form>
 
-    <form>
-        @foreach (var pokemon in @Model.pokes)
-        {
-            <div class="card">
-                <img src="{@pokemon.Image}" />
-                <input type"submit" value="{@pokemon.Name}" style="font-size:large" asp-for="@Model.selectedPoke" />
-                
-            </div>
+    </div>
 
-        }
-    </form>
-    
-</div>
+
