@@ -6,28 +6,40 @@ namespace PokeRepo.Pages
 {
     public class IndexModel : PageModel
     {
-        public PokkeRepo Repo { get; }
+        private readonly IPokkeRepo? Repo;
         public List<Pokemon> pokes { get; set; } = new List<Pokemon>();
         public Pokemon selectedPoke = new Pokemon();
+        public string message = "";
 
-
-
-        public async Task OnGetAsync()
+        public IndexModel(IPokkeRepo repo)
         {
-            //try
-            //{
-            //    pokes = Repo.GetAllPokemon().ToList();
-            //}
-            //catch (Exception ex)
-            //{
+            Repo = repo;
+        }
 
-            //}
+        public void OnGet()
+        {
+
 
         }
 
-        public void OnPostAsync(string pokeName)
+        public void OnPost()
         {
-            //return RedirectToPage("/Details", new {pokemon =  })
+
+            try
+            {
+                foreach (var pokee in Repo.GetAllPokemon())
+                {
+                    pokes.Add(pokee);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                message = "No pokémon has been viewed yet!";
+            }
+
+            Page();
         }
     }
 }

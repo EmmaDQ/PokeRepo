@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PokeRepo.Api;
 using PokeRepo.Models;
+using PokeRepo.Services;
 
 namespace PokeRepo.Pages
 {
@@ -9,13 +10,16 @@ namespace PokeRepo.Pages
 
         public Pokemon Poke { get; set; }
         public ApiCaller caller { get; set; }
+        public readonly IPokkeRepo repo;
 
-
-        public async void OnGet(string name)
+        public DetailsModel(IPokkeRepo repo)
         {
-
-
-
+            this.repo = repo;
+        }
+        public void OnGet(string name)
+        {
+            Pokemon pokk = repo.GetByName(name);
+            Poke = pokk;
 
         }
 

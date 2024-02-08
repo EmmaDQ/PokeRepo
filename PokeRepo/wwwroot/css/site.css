@@ -23,15 +23,9 @@ body {
 
 .card{
     background-color : antiquewhite;
-    height: 150px;
-    width: 75px;
+    height: 250px;
+    width: 200px;
 
-}
-
-.card image{
-    height: 50px;
-    width: 50px;
-    margin-block-start: 10px;
 }
 
 .first-page {
