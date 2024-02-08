@@ -7,21 +7,37 @@
 
     <div class="first-page text-center">
         <img src="\Images\pokemons.jpg" />
+        <br />
+        <br />
+        <br />
     <a asp-page="Gen1" class="btn btn-primary" ><h1 class="display-4">View a gen one Pokemon</h1></a>
+    <br />
+    <br />
+    <form method="post">
+        
+        <input class="btn btn-primary" type="submit" value="Show viewed pokémons!" />
+    </form>
+    
+
+        
+            <hr />
+            <br />
+            <div class="col d-flex flex-wrap justify-content-center align-items-center">
+                @foreach (var pokemon in @Model.pokes)
+                {
+                    <div class="card  ">
+                        <img src="@pokemon.Image" />
+                        <h3>@pokemon.Name</h3>
+
+
+                    </div>
 
 
 
-        <form>
-            @foreach (var pokemon in @Model.pokes)
-            {
-                <div class="card">
-                    <img src="{@pokemon.Image}" />
-                    <input type"submit" value="{@pokemon.Name}" style="font-size:large" asp-for="@Model.selectedPoke" />
-
-                </div>
-
-            }
-        </form>
+                }
+            </div>
+            
+        
 
     </div>
 

@@ -4,17 +4,17 @@
 }
 
 <div class="text-center flex-md-column justify-content-center align" >
-    <img src="@Model.Poke.Image"/>
+    <img src="@Model.Poke.Image" style="width:300px" />
     <h1>@Model.Poke.Name</h1>
     
-    <h6>Abilyties: </h6>
-    <ol>
+    <h6>Abilities: </h6>
+    <ul>
         @foreach(var ability in Model.Poke.Abilities)
         {
-            <li>ability</li>
+            <li>@ability</li>
         }
         
-    </ol>
+    </ul>
     <div>
         <h6>Stats:</h6>
         <ul class="list-unstyled">
@@ -27,8 +27,8 @@
         </ul>
     </div>
     <div>
-        <input asp-page="/Gen1" class="btn btn-primary" value="Back to Gen One list" />
-        <input asp-page="/Index" class="btn btn-primary" value="Home Page" />
+        <a asp-page="/Gen1" class="btn btn-primary">Back to Gen One list</a>
+        <a asp-page="/Index" class="btn btn-primary" >Home Page</a>
     </div>
     
 

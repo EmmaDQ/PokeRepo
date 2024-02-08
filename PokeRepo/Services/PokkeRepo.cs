@@ -12,11 +12,24 @@ namespace PokeRepo.Services
         }
         public void AddPokemonToDb(Pokemon pokemon)
         {
+
             if (pokemon != null)
             {
-                context.Pokemons.Add(pokemon);
-                context.SaveChanges();
+                bool isMatch = false;
+                foreach (var poke in GetAllPokemon())
+                {
+                    if (poke.Name == pokemon.Name)
+                    {
+                        isMatch = true;
+                    }
 
+                }
+
+                if (!isMatch)
+                {
+                    context.Pokemons.Add(pokemon);
+                    context.SaveChanges();
+                }
             }
 
             else
@@ -28,14 +41,17 @@ namespace PokeRepo.Services
 
 
 
-        public Pokemon? GetByName(string name)
+        public Pokemon GetByName(string name)
         {
+            Pokemon? pokeFound = new Pokemon();
 
-
-            if (name != null)
+            if (name == null)
             {
-                Pokemon? pokeFound = new Pokemon();
 
+            }
+
+            else
+            {
                 try
                 {
                     pokeFound = context.Pokemons.FirstOrDefault(p => p.Name == name);
@@ -45,11 +61,9 @@ namespace PokeRepo.Services
                 {
                     throw new Exception("No pokemon found");
                 }
-
-                return pokeFound;
             }
 
-            return null;
+            return pokeFound;
 
         }
 
@@ -58,12 +72,23 @@ namespace PokeRepo.Services
             List<Pokemon> pokemonList = new List<Pokemon>();
             pokemonList = context.Pokemons.ToList();
 
-            if (pokemonList != null)
+            if (pokemonList.Any())
             {
                 return pokemonList;
             }
 
-            else { return Enumerable.Empty<Pokemon>(); }
+            else
+            {
+
+                List<Pokemon> holder = new()
+                {
+                    new Pokemon(),
+                    new Pokemon()
+
+                };
+                return holder;
+
+            }
 
         }
     }

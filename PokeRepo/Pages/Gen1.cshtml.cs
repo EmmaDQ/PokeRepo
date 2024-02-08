@@ -30,9 +30,11 @@ namespace PokeRepo.Pages
             caller = new ApiCaller();
             Poke = await caller.MakeCall(pokeName.ToLower());
 
+
+
             repo.AddPokemonToDb(Poke);
 
-            return RedirectToPage("/Details", new { name = pokeName });
+            return RedirectToPage("/Details", new { Poke.Name });
 
         }
     }
