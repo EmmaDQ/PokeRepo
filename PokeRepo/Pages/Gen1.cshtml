@@ -7,16 +7,24 @@
 
 <div class=" text-center">
     <form method="post">
+        <select>
+
+        
         @foreach (var name in Enum.GetNames(typeof(Models.Gen1)))
         {
+
+            <option value="@name"> 
+
+            </option>
             <div>
-                <a asp-page="/Details" asp-route-name="@name"><h1>@name</h1></a>
+               
+                <a asp-action="OnPostAsync" asp-route-name="@name"><h1>@name</h1></a>
                 <hr />
                 <br />
             </div>
             
         }
-        
+        </select>
     </form>
     
     
