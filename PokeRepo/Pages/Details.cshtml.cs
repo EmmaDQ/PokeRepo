@@ -11,10 +11,10 @@ namespace PokeRepo.Pages
         public ApiCaller caller { get; set; }
 
 
-        public async void OnGet(Pokemon pokemon)
+        public async void OnGet(string name)
         {
 
-            Poke = pokemon;
+
 
 
         }

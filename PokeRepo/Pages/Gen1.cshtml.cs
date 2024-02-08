@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PokeRepo.Api;
 using PokeRepo.Models;
+using PokeRepo.Services;
 
 namespace PokeRepo.Pages
 {
@@ -10,21 +12,27 @@ namespace PokeRepo.Pages
         public ApiCaller caller { get; private set; }
         public Pokemon Poke { get; private set; }
 
-        public Gen1Model()
-        {
+        private readonly IPokkeRepo repo;
 
+        public Gen1Model(IPokkeRepo repo)
+        {
+            this.repo = repo;
         }
         public async void OnGet()
         {
 
         }
 
-        public async Task OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string pokeName)
         {
-            string name =
+
 
             caller = new ApiCaller();
-            Poke = await caller.MakeCall(name.ToLower());
+            Poke = await caller.MakeCall(pokeName.ToLower());
+
+            repo.AddPokemonToDb(Poke);
+
+            return RedirectToPage("/Details", new { name = pokeName });
 
         }
     }
