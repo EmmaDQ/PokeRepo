@@ -8,10 +8,10 @@
     <h1>@Model.Poke.Name</h1>
     
     <h6>Abilities: </h6>
-    <ul>
+    <ul style="list-style:none;">
         @foreach(var ability in Model.Poke.Abilities)
         {
-            <li>@ability</li>
+            <li>@ability.Name</li>
         }
         
     </ul>

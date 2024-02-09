@@ -23,18 +23,26 @@
             <hr />
             <br />
             <div class="col d-flex flex-wrap justify-content-center align-items-center">
-                @foreach (var pokemon in @Model.pokes)
-                {
-                    <div class="card  ">
-                        <img src="@pokemon.Image" />
-                        <h3>@pokemon.Name</h3>
+        @if(@Model.pokes != null)
+        {
+            @foreach (var pokemon in @Model.pokes)
+            {
+                <div class="card  ">
+                    <img src="@pokemon.Image" />
+                    <h3>@pokemon.Name</h3>
 
 
-                    </div>
+                </div>
 
 
 
-                }
+            }
+        }
+        else
+        {
+            <h1>No pokemones viewed</h1>
+        }
+
             </div>
             
         

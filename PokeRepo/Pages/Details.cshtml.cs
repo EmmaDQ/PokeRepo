@@ -18,7 +18,7 @@ namespace PokeRepo.Pages
         }
         public void OnGet(string name)
         {
-            Pokemon pokk = repo.GetByName(name);
+            Pokemon pokk = repo.GetByNameWithAbilities(name);
             Poke = pokk;
 
         }

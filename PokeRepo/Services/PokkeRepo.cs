@@ -1,4 +1,5 @@
-﻿using PokeRepo.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using PokeRepo.Database;
 using PokeRepo.Models;
 
 namespace PokeRepo.Services
@@ -67,28 +68,61 @@ namespace PokeRepo.Services
 
         }
 
+        public Pokemon GetByNameWithAbilities(string name)
+        {
+            Pokemon? pokeFound = new Pokemon();
+
+            if (name == null)
+            {
+
+            }
+
+            else
+            {
+                try
+                {
+                    pokeFound = context.Pokemons.Include(p => p.Abilities).FirstOrDefault(pokeFound => pokeFound.Name == name);
+                }
+
+                catch (Exception ex)
+                {
+                    throw new Exception("No pokemon found");
+                }
+            }
+
+            return pokeFound;
+
+        }
+
+        public Ability GetAbilityByName(string name)
+        {
+            Ability? abilityFound = new Ability();
+            if (name != null)
+            {
+
+                try
+                {
+                    abilityFound = context.Abilities.FirstOrDefault(a => a.Name == name);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ability not found");
+                }
+            }
+
+            return abilityFound;
+        }
+
         public IEnumerable<Pokemon> GetAllPokemon()
         {
             List<Pokemon> pokemonList = new List<Pokemon>();
             pokemonList = context.Pokemons.ToList();
 
-            if (pokemonList.Any())
-            {
-                return pokemonList;
-            }
 
-            else
-            {
+            return pokemonList;
 
-                List<Pokemon> holder = new()
-                {
-                    new Pokemon(),
-                    new Pokemon()
 
-                };
-                return holder;
 
-            }
 
         }
     }
