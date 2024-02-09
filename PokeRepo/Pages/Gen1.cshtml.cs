@@ -27,7 +27,7 @@ namespace PokeRepo.Pages
         {
 
 
-            caller = new ApiCaller();
+            caller = new ApiCaller(repo);
             Poke = await caller.MakeCall(pokeName.ToLower());
 
 

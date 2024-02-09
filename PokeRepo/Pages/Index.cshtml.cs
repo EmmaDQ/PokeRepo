@@ -7,7 +7,7 @@ namespace PokeRepo.Pages
     public class IndexModel : PageModel
     {
         private readonly IPokkeRepo? Repo;
-        public List<Pokemon> pokes { get; set; } = new List<Pokemon>();
+        public List<Pokemon>? pokes { get; set; } = new List<Pokemon>();
         public Pokemon selectedPoke = new Pokemon();
         public string message = "";
 
@@ -27,10 +27,15 @@ namespace PokeRepo.Pages
 
             try
             {
-                foreach (var pokee in Repo.GetAllPokemon())
+                if (Repo.GetAllPokemon().Any())
                 {
-                    pokes.Add(pokee);
+                    foreach (var pokee in Repo.GetAllPokemon())
+                    {
+                        pokes.Add(pokee);
+                    }
                 }
+
+
 
 
             }
